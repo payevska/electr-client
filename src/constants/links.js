@@ -1,5 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
+import { FaPhoneSquare } from "react-icons/fa"
+
 const data = [
   {
     id: 1,
@@ -8,7 +10,7 @@ const data = [
   },
   {
     id: 2,
-    text: "Услуги и цены",
+    text: "Услуги",
     url: "/prices/",
   },
   {
@@ -23,9 +25,9 @@ const data = [
   },
   {
     id: 5,
-    text: "Контакты",
+    text: "Kонтакты",
     url: "/contact/",
-  },
+  }  
 ]
 
 const tempLinks = data.map(link => {
@@ -40,6 +42,10 @@ export default ({ styleClass }) => {
   return (
     <ul className={`page-links ${styleClass ? styleClass : ""}`}>
       {tempLinks}
+      <li className="links-phone">
+        <FaPhoneSquare className="icon-phone"/>
+        <div className="number-phone">050-922-33-76</div>
+      </li>
     </ul>
   )
 }

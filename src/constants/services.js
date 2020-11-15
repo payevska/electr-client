@@ -1,5 +1,5 @@
 import React from "react"
-import { FaLightbulb, FaBolt, FaScrewdriver, FaRssSquare, FaPlug } from "react-icons/fa"
+import { FaBolt, FaScrewdriver, FaRssSquare, FaPlug } from "react-icons/fa"
 export default [
   {
     id: 1,

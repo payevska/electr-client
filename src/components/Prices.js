@@ -1,56 +1,50 @@
 import React from "react"
-//import Layout from "../components/Layout"
 import Title from "../components/Title"
-import { FaAlignRight, FaAngleDoubleRight } from "react-icons/fa"
 import { graphql, useStaticQuery } from "gatsby"
-import { Link } from "gatsby"
 import Price from "./Price"
-//import SEO from "../components/SEO"
 
 const query = graphql`
   {
-    allStrapiPrices(sort: {fields: strapiId, order: DESC}, filter: {desc: {elemMatch: {brick: {eq: false}, panel: {eq: false}}}})  {
+    allStrapiPrices(sort: {fields: strapiId, order: DESC})  {
       nodes {
         work
         strapiId
         desc {
           id
           measurement
+          foamed
           brick
-          panel
+          cement
           name
-          price
         }
       }
     }
   }
 `
 
-const Prices = () => {
+const Prices = ({title}) => {
   const data = useStaticQuery(query)
   const {
     allStrapiPrices: { nodes:prices },
   } = data
-  const [value, setValue] = React.useState(0)
-  const { work, desc } = prices[value]
 
   return (
+
       <section className="section prices">
-        <Title title="Услуги и цены" />
+        <Title title={title} />
         <div className="prices-center">
           <div className="price-table">
-            <ul>
+            <ul className="row-head">
               <li className="colum-big">Вид услуги</li>
               <li>Единица измерения</li>
-              <ul className="colum-three">
-                <li className="wrap">Цена, грн</li>
-                <li className="wrap">
-                  <ul>
-                    <li>Кирпич</li>
-                    <li>Панель</li>
-                  </ul>
-                </li>  
-              </ul>
+              <li className="wrap">
+                <div className="colum-three">Цена, грн</div>
+                <ul>
+                  <li className="colum-left">Пенобетон</li>
+                  <li className="colum-middle">Кирпич</li>
+                  <li className="colum-right">Бетон</li>
+                </ul>
+              </li>
             </ul>
             {
               prices.map((price,id)=>{
@@ -61,39 +55,8 @@ const Prices = () => {
             }  
           </div>  
         </div>
-        {/* <Link to="/about" className="btn center-btn">
-          more info
-        </Link> */}
       </section>
   )
 }
 
 export default Prices
-
-{/* <div className="btn-container">
-            {prices.map((item,index)=>{
-              return (
-                <button 
-                  key={item.strapiId} 
-                  onClick={()=> setValue(index)}
-                  className={`price-btn ${index === value && 'active-btn'}`}
-                >
-                  {item.work}
-                </button>
-              )
-            })}
-          </div>
-          <article className="price-info">
-            <h3>{work}</h3>
-            <p className="price-date"></p>
-            {
-              desc.map((item)=>{
-                return (
-                  <div key={item.id}>
-                    <FaAngleDoubleRight className="price-icon"></FaAngleDoubleRight>
-                    <p>{item.name}</p>
-                  </div>
-                )
-              })
-            }
-          </article> */}

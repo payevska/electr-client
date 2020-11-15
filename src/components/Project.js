@@ -22,10 +22,10 @@ const Project = ({description,title,montag,stack,url,image,index}) => {
           })}
         </div>
         <div className="project-links">
-          <a href={montag}>
+          <a href="">
             <FaInstagramSquare className="project-icon" />
           </a>
-          <a href={url}>
+          <a href="">
             <FaShareSquare className="project-icon" />
           </a>
         </div>

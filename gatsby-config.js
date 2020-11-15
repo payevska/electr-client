@@ -6,14 +6,21 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Electr Portfolio",
+    title: "Электрик Харьков",
     description: "This is Electr Portfolio Site",
     author: "@electr",
-    twitterUsername: "@payevska",
-    image: "/twitter-img.png",
-    siteUrl: "https://electr-portfolio.netlify.app",
+    //twitterUsername: "@payevska",
+    image: "/logo-icon.png",
+    siteUrl: "https://electric.kh.ua",
   },
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-5W3JMLH",
+        includeInDevelopment: false,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-react-helmet`,
@@ -30,23 +37,23 @@ module.exports = {
       options: {
         apiURL: `http://localhost:5000`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`prices`, `projects`],
+        contentTypes: [`prices`, `projects`, `blogs`],
         singleTypes: [],
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Roboto`,
-    //         variants: [`400`, `700`],
-    //       },
-    //       {
-    //         family: `Open Sans`,
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto`,
+            variants: [`400`, `700`],
+          },
+          {
+            family: `Open Sans`,
+          },
+        ],
+      },
+    },
   ],
 }
