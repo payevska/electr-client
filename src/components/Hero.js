@@ -44,7 +44,7 @@ const Hero = ({}) => {
             <h1>я Андрей</h1>
             <h4>Специалист по электромонтажным работам</h4>
             <h4>в Харькове</h4>
-            <Link to="/contact" className="btn">
+            <Link to="/contact/" className="btn">
               напишите мне
             </Link>
             <SocialLinks />
