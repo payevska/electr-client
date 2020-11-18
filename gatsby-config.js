@@ -38,23 +38,19 @@ module.exports = {
       options: {
         apiURL: `http://localhost:5000`,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`prices`, `projects`, `blogs`],
+        contentTypes: [`prices`, `projects`, `blogs`, `abouts`],
         singleTypes: [],
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Roboto`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Open Sans`,
-          },
+          `Roboto\:400,700`,
+          `Open Sans`
         ],
-      },
-    },
+        display: 'swap'
+      }
+    }
   ],
 }
