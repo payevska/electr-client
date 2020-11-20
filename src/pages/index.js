@@ -6,7 +6,8 @@ import Services from "../components/Services"
 import Projects from "../components/Projects"
 import SEO from "../components/SEO"
 import Blogs from "../components/Blogs"
-
+import About from "../components/About"
+import Title from "../components/Title"
 
 export default ({data}) => {
   const {
@@ -15,11 +16,19 @@ export default ({data}) => {
   } = data
   return (
     <Layout>
-      <SEO title="Главная" description="электрик в Харькове" />
+      {/* <SEO title="Главная" description="электрик в Харькове" /> */}
+      <SEO title="🔌 Все виды электромотажных работ! Телефон: ☎️ 050-922-33-76" description="электрик в Харькове" />
       <Hero/>
       <Services />
-      <Projects projects={projects} title="Вид услуги" showLink />
-      <Blogs blogs={blogs} title="Блог" showLink />
+      <About showLink/>
+      <section className="projects">
+        <Title title="Вид услуги" />
+        <Projects projects={projects} showLink />
+      </section>
+      <section className="section">
+        <Title title="Блог" />
+        <Blogs blogs={blogs} showLink />
+      </section>
     </Layout>
   )
 }
@@ -49,7 +58,7 @@ export const query = graphql`
     allStrapiBlogs(sort: {fields: date, order: DESC}, limit: 3) {
       nodes {
         content
-        date(formatString: "MMMM Do, YYYY")
+        date(formatString: "D MMMM, YYYY", locale: "ru")
         desc
         slug
         id

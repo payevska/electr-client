@@ -31,12 +31,15 @@ const Prices = ({title}) => {
   return (
 
       <section className="section prices">
-        <Title title={title} />
+        <div className="section-title">
+          <h1>Услуги и цены в Харькове</h1>
+          <div className="underline"></div>
+        </div>
         <div className="prices-center">
           <div className="price-table">
             <ul className="row-head">
-              <li className="colum-big">Вид услуги</li>
-              <li>Единица измерения</li>
+              <li className="colum-big table-li">Вид услуги</li>
+              <li className="table-li">Единица измерения</li>
               <li className="wrap">
                 <div className="colum-three">Цена, грн</div>
                 <ul>
