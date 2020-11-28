@@ -35,13 +35,14 @@ const Hero = ({}) => {
       Tag={`header`}
       className={`fon`}
       fluid={fon.childImageSharp.fluid}
+      alt="фон секции главной страницы"
     >
     <header className="hero">
       <div className="section-center hero-center">
         <article className="hero-info">
           <div>
             <div className="underlinle"></div>
-            <h1>я Андрей</h1>
+            <h2>я Андрей</h2>
             <h4>Специалист по электромонтажным работам</h4>
             <h4>в Харькове</h4>
             <Link to="/contact/" className="btn">
@@ -51,7 +52,7 @@ const Hero = ({}) => {
           </div>
         </article>
         <div className="hero-image">
-          <Image fluid={home.childImageSharp.fluid} className="hero-img" />
+          <Image fluid={home.childImageSharp.fluid} className="hero-img" alt="специалист по электромонтажным работам"/>
         </div>
       </div>
     </header>

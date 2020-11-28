@@ -4,8 +4,7 @@ import Blog from "./Blog"
 import { Link } from "gatsby"
 export const Blogs = ({blogs,title,showLink}) => {
   return (
-    <section className="section">
-      <Title title={title}/>
+    <section>
       <div className="section-center blogs-center">
         {blogs.map(blog=>{
           return <Blog key={blog.id} {...blog}/>

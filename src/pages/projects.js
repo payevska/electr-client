@@ -12,8 +12,12 @@ const ProjectsPage = ({
   return (
     <Layout>
       <SEO title="Примеры работ" description="галерея с фотографиями электромонтажных работ" />
-      <section className="project-page">
-        <Projects projects={projects} title="Примеры работ"/>
+      <section className="section projects-page">
+        <div className="section-title">
+          <h1>Примеры работ</h1>
+          <div className="underline"></div>
+        </div>
+        <Projects projects={projects}/>
       </section>
     </Layout>
   )

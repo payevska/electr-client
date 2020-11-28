@@ -6,7 +6,7 @@ const Project = ({description,title,montag,stack,url,image,index}) => {
   return (
     <article className="project">
       {image &&
-        <Image fluid={image.childImageSharp.fluid} className="project-img" />
+        <Image fluid={image.childImageSharp.fluid} alt={title} className="project-img" />
       }
       <div className="project-info">
         <span className="project-number">

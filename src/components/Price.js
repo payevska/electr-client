@@ -6,10 +6,10 @@ const Price = ({desc}) => {
         <>
             <ul key={id}>
                 <li className="colum-big">{name}</li>
-                <li>{measurement}</li>
-                <li>{foamed}</li>
-                <li>{brick}</li>
-                <li>{cement}</li>
+                <li className="table-li">{measurement}</li>
+                <li className="table-li">{foamed}</li>
+                <li className="table-li">{brick}</li>
+                <li className="table-li">{cement}</li>
             </ul>
         </>
     )    

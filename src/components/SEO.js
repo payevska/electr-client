@@ -18,7 +18,7 @@ const SEO = ({title, description}) => {
   const {site} = useStaticQuery( query );
   const {siteDesc,siteTitle,image} = site.siteMetadata
   return (
-    <Helmet htmlAttributes={{lang:"ru"}} title={`${title} | ${siteTitle}`}>
+    <Helmet htmlAttributes={{lang:"ru"}} title={`${siteTitle} ${title}`}>
       <meta name="description" content={description || siteDesc} />
       <meta name="image" content={image} />
       <link rel="shortcut icon" type="image/png" sizes="32x32" href="/logo-icon.png"></link>
@@ -27,3 +27,6 @@ const SEO = ({title, description}) => {
 }
 
 export default SEO
+
+
+{/* <Helmet htmlAttributes={{lang:"ru"}} title={`${title} | ${siteTitle}`}> */}

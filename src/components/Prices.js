@@ -2,6 +2,8 @@ import React from "react"
 import Title from "../components/Title"
 import { graphql, useStaticQuery } from "gatsby"
 import Price from "./Price"
+import ReactMarkdown from "react-markdown"
+
 
 const query = graphql`
   {
@@ -19,6 +21,14 @@ const query = graphql`
         }
       }
     }
+    allStrapiAbouts(sort: {fields: strapiId, order: DESC}, filter: {info_about: {eq: true},title: {eq: "Услуги"}}) {
+      nodes {
+        title
+        class
+        content
+        strapiId
+      }
+    }
   }
 `
 
@@ -26,17 +36,21 @@ const Prices = ({title}) => {
   const data = useStaticQuery(query)
   const {
     allStrapiPrices: { nodes:prices },
+    allStrapiAbouts: { nodes:abouts }
   } = data
 
   return (
-
-      <section className="section prices">
-        <Title title={title} />
+    <section>
+      <div className="prices">
+        <div className="section-title">
+          <h2>Услуги и цены в Харькове</h2>
+          <div className="underline"></div>
+        </div>
         <div className="prices-center">
           <div className="price-table">
             <ul className="row-head">
-              <li className="colum-big">Вид услуги</li>
-              <li>Единица измерения</li>
+              <li className="colum-big table-li">Вид услуги</li>
+              <li className="table-li">Единица измерения</li>
               <li className="wrap">
                 <div className="colum-three">Цена, грн</div>
                 <ul>
@@ -55,7 +69,23 @@ const Prices = ({title}) => {
             }  
           </div>  
         </div>
-      </section>
+      </div>
+      <div className="section about">
+        <div className="section-title">
+          <h1>Электромонтажные работы высокого качества, в Харькове</h1>
+          <div className="underline"></div>
+        </div>
+        <div className="section-center about-center">
+          {abouts.map(item=>{
+            return(
+              <div key={item.strapiId} className={item.class}>
+                <ReactMarkdown source={item.content}/>
+              </div>
+              )
+          })}
+        </div>  
+      </div>
+    </section>
   )
 }
 
