@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown"
 
 const query = graphql`
   {
-    allStrapiAbouts(sort: {fields: strapiId, order: DESC}, filter: {info_about: {eq: true}}) {
+    allStrapiAbouts(sort: {fields: strapiId, order: DESC}, filter: {info_about: {eq: true},title: {eq: "Главная"}}) {
       nodes {
         title
         class
@@ -24,20 +24,19 @@ const About = ({showLink}) => {
     allStrapiAbouts: { nodes:abouts },
   } = data
   return (
-    <section className="section bg-grey page-about">
+    <section className="section about">
       <div className="section-title">
-      <h1>Электрик Харьков - Все виды работ под ключ и с гарантией</h1>
-      <div className="underline"></div>
-    </div>
+        <h1>Электрик Харьков - Все виды работ под ключ и с гарантией</h1>
+        <div className="underline"></div>
+      </div>
       <div className="section-center about-center">
-      {abouts.map(item=>{
+        {abouts.map(item=>{
           return(
             <div key={item.strapiId} className={item.class}>
               <ReactMarkdown source={item.content}/>
             </div>
             )
         })}
-        
       </div>  
       {showLink && (
         <Link to="/prices/" className="btn center-btn" >

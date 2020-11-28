@@ -8,8 +8,8 @@ const PricesPage = () => {
     return (
       <Layout>
         <SEO title="Услуги и цены в Харькове" description="услуги и цены электромонтажа"/>
-        <section className="price-page">
-          <Prices title="Услуги и цены в Харькове"/>
+        <section className="section price-page">
+          <Prices/>
         </section>
       </Layout>
     )

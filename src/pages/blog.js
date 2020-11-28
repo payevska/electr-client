@@ -13,7 +13,7 @@ const Blog = ({
   return (
     <Layout>
       <SEO title="Блог" description="блог по электрике" />
-      <section className="blog-page">
+      <section className="section blog-page">
         <div className="section-title">
           <h1>Блог</h1>
           <div className="underline"></div>

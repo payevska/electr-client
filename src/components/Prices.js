@@ -2,6 +2,8 @@ import React from "react"
 import Title from "../components/Title"
 import { graphql, useStaticQuery } from "gatsby"
 import Price from "./Price"
+import ReactMarkdown from "react-markdown"
+
 
 const query = graphql`
   {
@@ -19,6 +21,14 @@ const query = graphql`
         }
       }
     }
+    allStrapiAbouts(sort: {fields: strapiId, order: DESC}, filter: {info_about: {eq: true},title: {eq: "Услуги"}}) {
+      nodes {
+        title
+        class
+        content
+        strapiId
+      }
+    }
   }
 `
 
@@ -26,13 +36,14 @@ const Prices = ({title}) => {
   const data = useStaticQuery(query)
   const {
     allStrapiPrices: { nodes:prices },
+    allStrapiAbouts: { nodes:abouts }
   } = data
 
   return (
-
-      <section className="section prices">
+    <section>
+      <div className="prices">
         <div className="section-title">
-          <h1>Услуги и цены в Харькове</h1>
+          <h2>Услуги и цены в Харькове</h2>
           <div className="underline"></div>
         </div>
         <div className="prices-center">
@@ -58,7 +69,23 @@ const Prices = ({title}) => {
             }  
           </div>  
         </div>
-      </section>
+      </div>
+      <div className="section about">
+        <div className="section-title">
+          <h1>Электромонтажные работы высокого качества, в Харькове</h1>
+          <div className="underline"></div>
+        </div>
+        <div className="section-center about-center">
+          {abouts.map(item=>{
+            return(
+              <div key={item.strapiId} className={item.class}>
+                <ReactMarkdown source={item.content}/>
+              </div>
+              )
+          })}
+        </div>  
+      </div>
+    </section>
   )
 }
 
